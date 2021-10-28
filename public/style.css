@@ -1,0 +1,195 @@
+@keyframes transparency {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+} 
+
+@keyframes texteffect {
+    0% {
+        motion-rotation: 10rem;
+    }
+    100% {
+        motion-rotation: 10rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .navbar a {
+        float: none;
+        width: 100%;
+    }
+  }
+
+@media screen and (max-width: 700px) {
+    .row {   
+      flex-direction: column;
+    }
+  }
+  
+
+:root {
+    --main: -webkit-linear-gradient(45deg, rgb(162, 0, 255) 0%, rgb(175, 81, 252) 30%, rgba(77,29,161,1) 100%);
+    --light: -webkit-linear-gradient(90deg, rgb(164, 108, 253) 0%,rgb(222, 145, 253) 30%,rgb(114, 58, 187) 100%);
+    --fg: white;
+    --bg: #05000c;
+
+    --fontbasic: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+    padding: 1rem;
+    text-align: center;
+    color: var(--fg);
+    margin-bottom: 3rem;
+}
+
+.navbar a {
+    margin-right: 2rem;
+    font-size: 1.5rem;
+    transition: .5s;
+}
+
+.navbar a:hover {
+    opacity: 80%;
+    transition: font-weight .5s ease-in-out;
+}
+
+.active {
+    font-weight: bold;
+}
+
+*   {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, div, a {
+    font-family: var(--fontbasic);
+}
+
+h1 {
+    font-weight: 800;
+}
+
+h1, code, pre {
+    background: var(--main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+mark, a {
+    background: var(--light);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+code, pre {
+    font-weight: 600;
+}
+
+h1.header {
+    font-size: 3rem;
+    animation: 1s ease-out 0s texteffect;
+}
+
+h2, h3, h4, h5, h6 {
+    font-weight: 800; 
+}
+
+a {
+    color: var(--main);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #7f27be;
+    transition: color .5s;
+}
+
+p, ul, li, dd, dt {
+    color: var(--fg);
+    font-family: var(--fontbasic);
+    font-weight: 400;
+}
+
+p, code, ul, li, dd, dt {
+    font-size: 1.2rem;
+}
+
+dt {
+    font-weight: bold;
+}
+
+body {
+    color: var(--fg);
+    background-color: var(--bg);
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 3%;
+    margin-bottom: 4%;
+
+    opacity: 100%;
+    animation: .5s ease-out 0s 1 transparency;
+}
+
+button, .button, input[type=submit] {
+    font-family: var(--fontbasic);
+    font-weight: 600;
+    background: var(--main);
+    border: none;
+    color: var(--fg);
+    display: inline-block;
+    padding: 1rem;
+    margin: 2rem;
+    cursor: pointer;
+    border-radius: 1rem;
+    display: inline-block;
+}
+
+button:hover, .button:hover, input:hover, select:hover, a:hover, code:hover {
+    opacity: 80%;
+    transition: opacity .5s;
+}
+
+input:not([type=submit]) {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 100%;
+    color: var(--fg);
+    font-family: var(--fontbasic);
+    background-color: var(--bg);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1.8rem;
+    border-style: none;
+    background-image: var(--main);
+    font-size: 1rem;
+}   
+
+input::placeholder {
+    opacity: 80%;
+}
+
+select {
+    font-family: var(--fontbasic);
+    color: var(--fg);
+    background-image: var(--main);
+    border-style: none;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+label {
+    font-weight: bold;
+}
+
+code {
+    margin: .5rem;    
+    font-family: 'Courier New', Courier, monospace;
+}
+
+blockquote {
+    font-style: italic;
+}

@@ -1,8 +1,0 @@
-<%const navdata = await json('nav')%>
-
-<div class="w-full p-4 bg-indigo-800 text-white flex items-center gap-4">
-    <a href="/" class="font-bold uppercase mr-8">onlix</a>
-    <%for(link of navdata){%>
-    <a href="<%= link.to%>" class="<%= (url == link.to)?'font-bold':''%>"><%=link.text%></a>
-    <%}%>
-</div>
