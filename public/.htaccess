@@ -7,21 +7,21 @@
 
 # Usage: copy save this file as .htaccess or add it to your httpd.conf
 
-ErrorDocument 404 '<a href="https://http.cat/[404]/" title="404 - Not Found "><img src=https://http.cat/[404]" alt="404 - Not Found"></a> <h5>The requested website URL couldn't be found.</h5>'
-ErrorDocument 401 '<a href="https://http.cat/[401]/" title="401 - Unauthorized "><img src=https://http.cat/[401]" alt="401 - Unauthorized"></a> <h5>You have insufficient permissions to view this page.</h5>'
+ErrorDocument 404 '<a href="https://http.cat/[404]/" title="404 - Not Found "><img src=https://http.cat/[404]" alt="404 - Not Found"></a>'
+ErrorDocument 401 '<a href="https://http.cat/[401]/" title="401 - Unauthorized "><img src=https://http.cat/[401]" alt="401 - Unauthorized"></a>'
 ErrorDocument 406 '<a href="https://http.cat/[406]/" title="406 - Not Acceptable "><img src=https://http.cat/[406]" alt="406 - Not Acceptable"></a>'
 ErrorDocument 408 '<a href="https://http.cat/[408]/" title="408 - Request Timeout "><img src=https://http.cat/[408]" alt="408 - Request Timeout"></a>'
 ErrorDocument 409 '<a href="https://http.cat/[409]/" title="409 - Conflict "><img src=https://http.cat/[409]" alt="409 - Conflict"></a>'
 ErrorDocument 414 '<a href="https://http.cat/[414]/" title="414 - Request-URI Too Long "><img src=https://http.cat/[414]" width="400" height="500" alt="414 - Request-URI Too Long"></a>'
 ErrorDocument 502 '<a href="https://http.cat/[502]/" title="502 - Bad Gateway "><img src=https://http.cat/[502]" alt="502 - Bad Gateway"></a>'
-ErrorDocument 405 '<a href="https://http.cat/[405]/" title="405 - Method Not Allowed "><img src=https://http.cat/[405]" alt="405 - Method Not Allowed"></a> <h5>This website isn't ment to be requested using this method. Try another method, like GET.</h5>'
-ErrorDocument 403 '<a href="https://http.cat/[403]/" title="403 - Forbidden "><img src=https://http.cat/[403]" alt="403 - Forbidden"></a> <h5>You have insufficient permissions to view this page.</h5>'
+ErrorDocument 405 '<a href="https://http.cat/[405]/" title="405 - Method Not Allowed "><img src=https://http.cat/[405]" alt="405 - Method Not Allowed"></a>'
+ErrorDocument 403 '<a href="https://http.cat/[403]/" title="403 - Forbidden "><img src=https://http.cat/[403]" alt="403 - Forbidden"></a>'
 ErrorDocument 417 '<a href="https://http.cat/[417]/" title="417 - Expectation Failed "><img src=https://http.cat/[417]" alt="417 - Expectation Failed"></a>'
 ErrorDocument 413 '<a href="https://http.cat/[413]/" title="413 - Request Entity Too Large "><img src=https://http.cat/[413]" alt="413 - Request Entity Too Large"></a>'
 ErrorDocument 507 '<a href="https://http.cat/[507]/" title="507 - Insufficient Storage "><img src=https://http.cat/[507]" alt="507 - Insufficient Storage"></a>'
 ErrorDocument 508 '<a href="https://http.cat/[508]/" title="508 - Loop Detected "><img src=https://http.cat/[508]" alt="508 - Loop Detected"></a>'
 ErrorDocument 426 '<a href="https://http.cat/[426]/" title="426 - Upgrade Required "><img src=https://http.cat/[426]" alt="426 - Upgrade Required"></a>'
-ErrorDocument 500 '<a href="https://http.cat/[500]/" title="500 - Internal Server Error "><img src=https://http.cat/[500]" alt="500 - Internal Server Error"></a> <h5>I'm really sorry, this page is broken and is facing an system error :( - If you are sure that you did everything right, report the problem at https://github.com/nsde/web/issues/new</h5>'
+ErrorDocument 500 '<a href="https://http.cat/[500]/" title="500 - Internal Server Error "><img src=https://http.cat/[500]" alt="500 - Internal Server Error"></a>'
 ErrorDocument 302 '<a href="https://http.cat/[302]/" title="302 - Found "><img src=https://http.cat/[302]" alt="302 - Found"></a>'
 
 # Apache doesn't seem to like these status codes as ErrorDocuments:
