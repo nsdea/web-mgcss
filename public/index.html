@@ -1,58 +1,68 @@
-<html><head>
+<html>
+  <head>
     <title>ONLIX</title>
-    <link rel="stylesheet" href="style.css" media="screen">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ONLIX.ME Homepage, created by Felix aka. nsde">
-    <meta name="keywords" content="onlix, onlix.me, nsde, onlix me">
-    <meta name="author" content="ONLIX aka. Felix aka. nsde">
-  
-    <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="favicons/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="favicons/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="favicons/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="favicons/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="favicons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="favicons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
-    <link rel="manifest" href="favicons/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="favicons//ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-</head>
+    <!--#include file="head.html"-->
+  </head>
 
-<body>
+  <body>
     <div class="navbar">
-        <a class="active">Home</a>
-        <a href="/foss">#FOSS</a>
-        <a href="/dc">Discord*</a>
-        <a href="https://github.com/nsde">GitHub*</a>
-        <a href="/source">Source Code</a>
-        <h5>*) external redirect</h5>
+      <a class="active">Home</a>
+      <a href="dc">Discord*</a>
+      <a href="https://github.com/nsde">GitHub*</a>
     </div>
 
     <div class="header">
-        <h1 class="header">ONLIX</h1>
-        <h3>This website is heavily <u>under construction</u><br>(as you can tell lol)</h3>
+      <h1 class="header">ONLIX</h1>
+      <h3>🔧 This website is under construction.</h3>
     </div>
-
-    <h2>My GitHub statistics</h2>
-    <img alt="ONLIX GitHub Stats" src="https://img.shields.io/github/stars/nsde?label=My%20GitHub%20Stars&amp;style=for-the-badge">
 
     <h2>My Discord status</h2>
     <p>What I'm doing right now</p>
-    <img alt="ONLIX Discord Status" src="https://discord.c99.nl/widget/theme-1/657900196189044736.png">
+    <img
+      alt="ONLIX Discord Status"
+      src="https://discord.c99.nl/widget/theme-4/657900196189044736.png"
+    />
+    <h2>My Discord community</h2>
+    <p>Join to chat with me and my friends!</p>
+    <iframe
+      alt="ONLIX Discord Community Server"
+      src="https://discord.com/widget?id=717380468923695186&amp;theme=dark"
+      allowtransparency="true"
+      sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+      width="300"
+      height="300"
+      frameborder="0"
+    ></iframe>
 
-    <p>My Discord community</p>
-    <iframe alt="ONLIX Discord Community Server" src="https://discord.com/widget?id=717380468923695186&amp;theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" width="300" height="300" frameborder="0"></iframe>
+    <br />
+    <h4>
+      Thanks a lot to <a href="https://jh220.de">JH220</a> for helping me with
+      my website (HTTPS, SFTP, SSH) he's a nice guy :)
+    </h4>
 
-    <br>
-    <h4>Thanks a lot to <a href="https://jh220.de">JH220</a> for helping me with my website (HTTPS, SFTP, SSH) he's a nice guy :)</h4>
+    <br />
 
+    <form method="get" id="ddgSearch" action="https://duckduckgo.com/">
+      <input type="hidden" name="sites" value="onlix.me" />
+      <input type="hidden" name="kt" value="p" />
+      <input
+        type="text"
+        name="q"
+        placeholder="Search this page"
+        aria-label="Search onlix.me on DuckDuckGo"
+      />
+      <button type="submit">Search</button>
+    </form>
 
+    <br />
 
-</body></html>
+    <h4 style="display: inline-block; margin-right: 2rem">
+      <a href="https://github.com/nsde/web">This website's source code</a>
+    </h4>
+    <h4 style="display: inline-block; margin-right: 2rem">
+      <a href="https://github.com/nsde/web/issues/new"
+        >Report an issue or request a feature</a
+      >
+    </h4>
+  </body>
+</html>
