@@ -7,6 +7,22 @@
 
 # Usage: copy save this file as .htaccess or add it to your httpd.conf
 
+# SYSTEM
+AddType text/x-server-parsed-html .shtml
+AddType text/html .html 
+AddHandler server-parsed .html 
+Options Indexes FollowSymLinks Includes
+
+# REDIRECTS
+
+RedirectMatch 301 /dc https://discord.gg/8bTcX6SmkZ
+RedirectMatch 301 /yt https://youtube.com/onlix
+RedirectMatch 301 /yt/nsde https://www.youtube.com/channel/UCmKxC8XnTGBmnTaRQoeOztw
+RedirectMatch 301 /gh https://github.com/nsde
+RedirectMatch 301 ^/yv/(.*)$ https://youtu.be/$1
+
+# D ERRORS
+
 ErrorDocument 404 '<a href="https://http.cat/[404]/" title="404 - Not Found "><img src=https://http.cat/[404]" alt="404 - Not Found"></a>'
 ErrorDocument 401 '<a href="https://http.cat/[401]/" title="401 - Unauthorized "><img src=https://http.cat/[401]" alt="401 - Unauthorized"></a>'
 ErrorDocument 406 '<a href="https://http.cat/[406]/" title="406 - Not Acceptable "><img src=https://http.cat/[406]" alt="406 - Not Acceptable"></a>'
@@ -31,3 +47,4 @@ ErrorDocument 302 '<a href="https://http.cat/[302]/" title="302 - Found "><img s
 #ErrorDocument 431 '<a href="https://http.cat/[431]/" title="431 - Request Header Fields Too Large "><img src=https://http.cat/[431]" alt="431 - Request Header Fields Too Large"></a>'
 #ErrorDocument 599 '<a href="https://http.cat/[599]/" title="599 - Network connect timeout error "><img src=https://http.cat/[599]" alt="599 - Network connect timeout error"></a>'
 #ErrorDocument 429 '<a href="https://http.cat/[429]/" title="429 - Too Many Requests "><img src=https://http.cat/[429]" alt="429 - Too Many Requests"></a>'
+

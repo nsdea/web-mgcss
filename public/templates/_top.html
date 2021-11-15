@@ -1,0 +1,18 @@
+<html>
+  <head>
+    {% include '_head.html' %}
+  </head>
+
+  <body>
+    <div class="top">
+      {% with page="index" %}
+        {% include '_navbar.html' %}
+      {% endwith %}
+
+      <div class="header">
+        <h1 class="header">{{ title }}</h1>
+        <h3>{{ description }}</h3>
+        <img src="{{ image }}">
+    </div>
+
+    <div class="base">
