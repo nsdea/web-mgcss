@@ -1,22 +1,87 @@
-{% with title="LixCraft", description="Hello there!" %}
+{% with title="LixCraft", description="The perfect allrounder modpack" %}
     {% include '_top.html' %}
 {% endwith %}
-<h1>Compare Two Images</h1>
 
-<p>Click and slide the blue slider to compare two images:</p>
+<section class="container" id="main">
+    <h6>My Minecraft MultiMC Modpack</h6>
+    <h3 class="title">LixCraft</h3>
+    <p>Use the slider to compare </p>
 
-<div class="img-comp-container">
-  <div class="img-comp-img">
-    <img src="img_snow.jpg" width="300" height="200">
-  </div>
-  <div class="img-comp-img img-comp-overlay">
-    <img src="img_forest.jpg" width="300" height="200">
-  </div>
-</div>
-
-<script>
-/*Execute a function that will execute an image compare function for each element with the img-comp-overlay class:*/
-initComparisons();
-</script>
-
+    <div stlye="display: flex;">
+        <img class="big" src="{{ url_for('static', filename='lixcraft/off.png') }}" alt="OFF"/>
+        <img class="big" src="{{ url_for('static', filename='lixcraft/on.png') }}" alt="ON"/>
+    </div>
+    
+    <table>
+        <tr>
+            <th>Version</th>
+            <th>Description</th>
+            <th>Mod count</th>
+            <th>Download</th>
+        </tr>
+        <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>Centro comercial Moctezuma</td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+        </tr>
+    </table>
+      
+    <details>
+        <summary>Mod List</summary>
+        <ul>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/healthcare">HealthCare (by samo_lego)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/fast-furnace-for-fabric">Fast Furnace for Fabric (by tfarecnim)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/enchantment-descriptions">Enchantment Descriptions (by DarkhaxDev)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/minecraftcapes-mod">MinecraftCapes Mod (by james090500)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/lazydfu">LazyDFU (by tuxed)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/light-overlay">Light Overlay (Rift/Forge/Fabric) (by shedaniel)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/better-beds">Better Beds (by Motschen)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/torohealth-damage-indicators">ToroHealth Damage Indicators (by ToroCraft)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/fastchest">FastChest (by fake_domi)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/appleskin">AppleSkin (by squeek502)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/sodium-extra">Sodium Extra (by FlashyReese)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/architectury-fabric">Architectury API (Fabric) (by shedaniel)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/dynamic-fps">Dynamic FPS (by juliand665)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/yosbr">Your Options Shall Be Respected (YOSBR) (by shedaniel)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/entityculling">Entity Culling Fabric/Forge (by tr9zw)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/wi-zoom">WI Zoom (by alexander9892)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/lithium">Lithium (Fabric) (by jellysquid3)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/slight-gui-modifications">'Slight' Gui Modifications (by shedaniel)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/fpsdisplay">FPS - Display (by Gray_ray)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/dark-loading-screen">Dark Loading Screen (by Neecko5b84)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/item-model-fix">Item Model Fix (Fabric) (by Pepper_Bell)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/spark">spark (by Iucko)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/lambdynamiclights">LambDynamicLights (by LambdAurora)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/tool-stats">Tool Stats (by DarkhaxDev)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/krypton">Krypton (by tuxed)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/modmenu">Mod Menu (by ProspectorDev)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items">Roughly Enough Items Fabric (REI) (by shedaniel)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/better-third-person">Better Third Person (by Socolio)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/antighost">AntiGhost (by Giselbaer)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/audio-output">Audio Output (by Maximumgame)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/advancements-debug">Advancements Debug (by thetechnici4n)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/fabrishot">Fabrishot (by ramidzkh)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/capes">Fabric Capes (by VictorKohler)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/fabric-language-kotlin">Fabric Language Kotlin (by modmuss50)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/no-weather-effects">No Weather Effects (by Lortseam_)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/clumps">Clumps (by Jaredlll08)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/cloth-config">Cloth Config API (Fabric) (by shedaniel)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/cloth-api">Cloth API (Fabric) (by shedaniel)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/logical-zoom">Logical Zoom (by logicalgeekboy)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/fabric-api">Fabric API (by modmuss50)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/smooth-boot">Smooth Boot (Fabric) (by UltimateBoomer)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/controlling-for-fabric">Controlling for Fabric (by Jaredlll08)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/wthit">WTHIT (by badasintended)</a></li>
+            <li><a href="https://www.curseforge.com/minecraft/mc-mods/cull-leaves">Cull Leaves (by Motschen)</a></li>
+        </ul>
+    
+    </details>     
+</section>
+  
+    
 {% include '_bottom.html' %}

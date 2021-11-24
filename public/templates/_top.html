@@ -1,18 +1,10 @@
-<html>
-  <head>
-    {% include '_head.html' %}
-  </head>
+{% include '_head.html' %}
+{% include '_navbar.html' %}
 
-  <body>
-    <div class="top">
-      {% with page="index" %}
-        {% include '_navbar.html' %}
-      {% endwith %}
-
-      <div class="header">
-        <h1 class="header">{{ title }}</h1>
-        <h3>{{ description }}</h3>
-        <img src="{{ image }}">
-    </div>
-
-    <div class="base">
+<header class="header" id="home">
+    <section class="container">
+        <h1 class="title">ONLIX</h1>
+        <p class="description" data-version="Currently">Welcome to my website!</p>
+        <a class="button" href="https://github.com/nsde/web/issues/new" title="GitHub">Suggest something for this website</a>
+    </section>
+</header>

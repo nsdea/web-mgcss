@@ -1,28 +1,54 @@
-<title>ONLIX</title>
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- Display -->
-<link
-  rel="stylesheet"
-  href="{{ url_for('static', filename='style.css') }}"
-/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta charset="UTF-8" />
+<head>
+    <meta charset="utf-8">
 
-<!-- SEO -->
-<meta
-  name="description"
-  content="ONLIX.ME Homepage, created by Felix aka. nsde"
-/>
-<meta name="keywords" content="onlix, onlix.me, nsde, onlix me" />
-<meta name="author" content="ONLIX aka. Felix aka. nsde" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+    <meta name="msapplication-TileColor" content="#f4f5f6">
+    <meta name="msapplication-TileImage" content="images/mstile-150x150.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f4f5f6">
+    <meta name="apple-mobile-web-app-title" content="ONLIX - Homepage">
+    <meta name="application-name" content="ONLIX - Homepage">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#f4f5f6">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="ONLIX">
+    <meta name="description" content="ONLIX - Homepage">
 
-{% include '_favicons.html' %}
+    <meta property="og:description" content="ONLIX - Homepage">
+    <meta property="og:image" content="images/thumbnail.png">
+    <meta property="og:locale" content="en">
+    <meta property="og:site_name" content="ONLIX - Homepage">
+    <meta property="og:title" content="ONLIX - Homepage">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/">
+    <meta property="article:published_time" content="2020-08-20T04:49:02.278Z">
+    <meta property="article:author" content="ONLIX">
+    <meta property="article:section" content="website">
 
-<!-- Other -->
-<link rel="manifest" href="../_favicons/manifest.json" />
-<meta name="msapplication-TileColor" content="#ffffff" />
-<meta
-  name="msapplication-TileImage"
-  content="../_favicons//ms-icon-144x144.png"
-/>
-<meta name="theme-color" content="#ffffff" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="ONLIX - Homepage">
+    <meta name="twitter:url" content="/">
+    <meta name="twitter:site" content="/">
+    <meta name="twitter:creator" content="ONLIX">
+    <meta name="twitter:title" content="ONLIX - Homepage">
+    <meta name="twitter:description" content="ONLIX - Homepage">
+    <meta name="twitter:image:src" content="images/thumbnail.png">
+
+    <base src="https://onlix.me">
+    <title>ONLIX - Homepage</title>
+    <link rel="canonical" href="/">
+    <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="images/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="manifest.json">
+    <link rel="image_src" href="images/thumbnail.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+
+    {% include '_favicons.html' %}
+</head>

@@ -1,29 +1,42 @@
-{% with title="ONLIX", description="Hello there!" %}
+{% with title="ONLIX", description="Welcome!" %}
     {% include '_top.html' %}
 {% endwith %}
-<h2>My Discord status</h2>
-<p>What I'm doing right now</p>
-<img
-  alt="ONLIX Discord Status"
-  src="https://discord.c99.nl/widget/theme-4/657900196189044736.png"
-/>
 
-<h2>My Discord community</h2>
-<p><a href="dc">Join</a> to chat with me and my friends!</p>
-<iframe
-  alt="ONLIX Discord Community Server"
-  src="https://discord.com/widget?id=717380468923695186&amp;theme=dark"
-  allowtransparency="true"
-  sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-  width="300"
-  height="300"
-  frameborder="0"
-></iframe>
+<section class="container" id="main">
+  <h3 class="title">Hello there!</h3>
+  <p>
+    I'm Felix, a software developer from Germany. I love building web apps and
+    working with APIs :)
+  </p>
+</section>
+<section class="container" id="subscribe">
+  <div class="row row-center">
+    <div class="column">
+      <h3 class="title">Search something...</h3>
+      <p>Use this to look up an project of mine</p>
+    </div>
+    <div class="column subscribe-column">
+      <form
+        method="get"
+        id="search"
+        action="https://duckduckgo.com/"
+        class="row row-center"
+      >
+        <input type="hidden" name="sites" value="onlix.me" />
+        <input type="hidden" name="kt" value="p" />
+        <input
+          type="text"
+          name="q"
+          class="subscribe-input"
+          maxlength="80"
+          required
+          placeholder="Search on this website..."
+          aria-label="Search onlix.me on DuckDuckGo"
+        />
+        <button type="submit" class="subscribe-button">Search</button>
+      </form>
+    </div>
+  </div>
 
-<br>
-
-<p>
-  Shoutout to <a href="https://jh220.de">JH220</a> for helping me with
-  my website!
-</p>
-{% include '_bottom.html' %}
+  {% include '_bottom.html' %}
+</section>
