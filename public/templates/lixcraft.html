@@ -1,33 +1,45 @@
-{% with title="LixCraft", description="The perfect allrounder modpack" %}
+{% with title="LixCraft",
+        description="The perfect Minecraft modpacks for PvP, SMPs and just causal playing",
+        url="#download",
+        button="Jump to downloads"
+%}
     {% include '_top.html' %}
 {% endwith %}
 
 <section class="container" id="main">
-    <h6>My Minecraft MultiMC Modpack</h6>
-    <h3 class="title">LixCraft</h3>
-    <p>Use the slider to compare </p>
+    <blockquote>
+        <strong>Installation</strong>
+        <p>I won't get into the exact details of this, as I'm assuming you have experience with Minecraft and MultiMC.</p>
+        <p>It's as easy as installing a MultiMC instance.</p>
+    </blockquote>
+
+    <br><br>
+
+    <h5>LixCraft for newer versions of the game</h5>
+    <h2 class="title">LixCraft Evo for 1.17+ (Axo & newer)</h3>
+
+    <p>As you can see below, the modpack improves vision underwater and in caves, allowing a much easier spotting of enemies or loot. </p>
+    <p>In addition to that, when it comes to performance, the improvement thanks to JellySquid's mods is just awesome. </p>
 
     <div stlye="display: flex;">
         <img class="big" src="{{ url_for('static', filename='lixcraft/off.png') }}" alt="OFF"/>
         <img class="big" src="{{ url_for('static', filename='lixcraft/on.png') }}" alt="ON"/>
     </div>
+
+    <h3>Downloads</h3>
     
-    <table>
+    <table id="download">
         <tr>
+            <th>Name</th>
             <th>Version</th>
-            <th>Description</th>
-            <th>Mod count</th>
+            <th>Updated</th>
             <th>Download</th>
         </tr>
         <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-        </tr>
-        <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
+            <td>LixCraft Axo 2</td>
+            <td>Fabric 1.17.1</td>
+            <td>24.11.2021</td>
+            <td><a class="button" href="#">168+ MB</a></td>
         </tr>
     </table>
       
@@ -79,8 +91,51 @@
             <li><a href="https://www.curseforge.com/minecraft/mc-mods/wthit">WTHIT (by badasintended)</a></li>
             <li><a href="https://www.curseforge.com/minecraft/mc-mods/cull-leaves">Cull Leaves (by Motschen)</a></li>
         </ul>
+    </details>
     
-    </details>     
+    <br><br><br>
+    
+    <h5>LixCraft for older versions of the game</h5>
+    <h2 class="title">LixCraft PvP for 1.8 (Prism)</h3>
+
+    <blockquote>
+        <strong>Warning</strong>
+        <p>As Minecraft 1.8 is <i>more than 7 years</i> old, it's obvious that it's an unsupported version.</p>
+        <p>This results in a more unstable experience, but still, Minecraft 1.8 is famous for being the best PvP version for Minecraft, so we'll have to live with it.</p>
+    </blockquote>
+
+    <blockquote>
+        <strong>Notice</strong>
+        <p>I can't gurantee you that the server network of your choice won't block any of the modifications I use for providing an unfair advantage.</p>
+        <p>Theoretically, this could result in a ban, but the chances are pretty low, as <strong>I really try my best to comply with Hypixel's guide</strong> (see below). For example, there is no FreeLook in my modpack.</p>
+        <button class="button button-clear"><a href="https://hypixel.net/threads/guide-allowed-modifications.345453/">Learn more about banned modifications on Hypixel</a></button>
+    </blockquote>
+
+    <p> </p>
+
+    <h3>Downloads</h3>
+    
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Version</th>
+            <th>Updated</th>
+            <th>Download</th>
+        </tr>
+        <tr>
+            <td>LixCraft Prism 1</td>
+            <td>Forge 1.8.9</td>
+            <td>Coming soon</td>
+            <td><a class="button" href="#">??? MB</a></td>
+        </tr>
+    </table>
+      
+    <details>
+        <summary>Mod List</summary>
+            <ul>
+                <li>Coming soon</li>
+            </ul>
+
 </section>
   
     

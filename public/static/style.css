@@ -15,8 +15,9 @@
     .section,
     div :not(svg) :not(img) :not(nav.navigation) {
         color: white !important;
-        background-color: #040407 !important;
+        background-color: #0f0f11 !important;
     }
+
     nav.navigation {
         border-bottom: 0 !important;
     }
