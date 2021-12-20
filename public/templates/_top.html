@@ -5,6 +5,8 @@
     <section class="container">
         <h1 class="title">{{ title }}</h1>
         <p class="description" data-version="Currently">{{ description }}</p>
-        <a class="button" href="{{ url }}" title="{{ button }}">{{ button }}</a>
+        {% if button %}
+            <a class="button" href="{{ url }}" title="{{ button }}">{{ button }}</a>
+        {% endif %}
     </section>
 </header>
