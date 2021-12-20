@@ -1,18 +1,14 @@
+import os
 import flask
 
 app = flask.Flask(__name__)
 
-@app.route('/')
-def home():
-    return flask.render_template('index.html')
+def default_rendering():
+    return 
 
-@app.route('/empty')
-def empty():
-    return flask.render_template('empty.html')
-
-@app.route('/lixcraft')
-def lixcraft():
-    return flask.render_template('lixcraft.html')
+for page in os.listdir('public/templates'):
+    if page.startswith('__'):
+        app.add_url_rule(page.replace('.html', '').replace('__', '/'), page, lambda page=page: flask.render_template(page) , methods=['GET', 'POST'])
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=2021, debug=True)
