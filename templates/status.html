@@ -1,0 +1,84 @@
+{% with title="Status Page", description="Technical server-information",
+url="https://onlix.me/status", button="Refresh" %} {% include '_top.html' %} {% endwith %}
+
+<section class="container" id="main">
+    <div id="info-text">
+
+        <h2 class="title">Minecraft</h1>
+            <p>Don't know what <i>Minecraft</i> is? <a href="https://en.wikipedia.org/wiki/Minecraft">Wikipedia's page about Minecraft</a> and <a href="https://en.wikipedia.org/wiki/Minecraft_server">Minecraft servers</a></a></p>
+            <p>I'm currently hosting a Minecraft server, sometimes it's private (because I want to play with my friends), sometimes it isn't.</p>
+            <p>Rarely, I'm even running multiple Minecraft services/servers at once, so please keep in mind that this table only shows port :25565</p>
+            <p>Open the <a href="https://lix.freshstatus.io/">service dashboard</a> for the server status in the past time.</p>
+
+            <table id="minecraft">
+                <tr>
+                    <th>Detail</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Players Online</td>
+                    <td>{{ mc_players }}</td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>{{ mc_motd }}</td>
+                </tr>
+                <tr>
+                    <td>Latency</td>
+                    <td>{{ mc_ping }} ms</td>
+                </tr>
+            </table>
+
+            <p>If the values are empty, the server either crashed or is (intentionally) down or it's hosted on a different port.</p>
+            
+        <br>
+
+        <h2 class="title">Software</h1>
+        
+        <table id="software">
+            <tr>
+                <th>Detail</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Process Count</td>
+                <td>{{ pids }}</td>
+            </tr>
+            <tr>
+                <td>Last boot</td>
+                <td>{{ boot_days }} days ago</td>
+            </tr>
+            <tr>
+                <td>Operating System</td>
+                <td>{{ os }}</td>
+            </tr>
+        </table>
+        
+        <br>
+
+        <h2 class="title">Hardware</h1>
+        
+            <table id="hardware">
+                <tr>
+                    <th>Part</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>CPU</td>
+                    <td>{{ cpus }}/{{ threads }} vCores @ {{ cpu }}%</td>
+                </tr>
+                <tr>
+                    <td>RAM</td>
+                    <td>{{ ram }}</td>
+                </tr>
+                <tr>
+                    <td>NVMe</td>
+                    <td>{{ disk }}</td>
+                </tr>
+            </table>
+    
+    </div>
+    <br><br>
+</section>
+
+{% include '_bottom.html' %}

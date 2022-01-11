@@ -6,6 +6,18 @@
   * Licensed under the MIT license
  */
 
+@keyframes opacityanimation {
+    0%,
+    50% {
+        opacity: 0100%;
+    }
+    25%,
+    75% {
+        opacity: 100%;
+    }
+}
+
+
 @media (prefers-color-scheme: dark) {
     *,
     body,
@@ -20,6 +32,17 @@
 
     nav.navigation {
         border-bottom: 0 !important;
+    }
+
+    a  {
+        color: #b364e4 !important;
+        opacity: 1.0;
+        transition: 0.5s;
+    }
+    
+    a:hover  {
+        opacity: 0.7;
+        transition: 0.5s;
     }
 }
 
