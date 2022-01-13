@@ -1,4 +1,5 @@
 import os
+import re
 import time
 import flask
 import distro
@@ -8,8 +9,9 @@ import string
 import minestat
 import jinja2.exceptions
 
-from flask import request, jsonify
+from datetime import datetime
 from html import escape, unescape
+from flask import request, jsonify
 
 app = flask.Flask(__name__)
 
@@ -88,6 +90,34 @@ def file_path():
         mc_ping=mc.latency if mc else '',
         mc_protocol=mc.slp_protocol if mc else ''
     )
+
+@app.route('/mc-console-log')
+def mc_console_log():
+    log = []
+    server_name = 'paper'
+    lines = open(f'/home/minecraft/{server_name}/.console_history').read().split('\n')[:-1]
+
+    for line in lines:
+        line_date = line.split(':')[0]
+        line_command = line.split(':')[1]
+        
+        for x in ['w', 'msg', 'teammsg', 'tell']:
+            if line_command.startswith(x):
+                line_command = f'{x} [CENSORED]'
+        
+        if line_command.startswith('ban-ip '):
+            line_command = 'ban-ip [CENSORED IP]'
+        
+        if line_command.startswith('pardon-ip'):
+            line_command = 'pardon-ip [CENSORED IP]'
+
+        line_date = datetime.fromtimestamp(int(line_date)//1000).strftime('%d.%m.%y %H:%M:%S')
+        
+        log.append({'time': line_date, 'command': line_command})
+    
+    log.reverse()
+
+    return flask.render_template(f'mcclog.html', log=log, server_name=server_name)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=2021, debug=True)
