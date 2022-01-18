@@ -36,7 +36,12 @@ def error_404(error):
 
 @app.route('/<path:subpath>')
 def page_returner(subpath):
-    return flask.render_template(f'{escape(subpath)}.html')
+    page = escape(subpath)
+    if os.path.exists(f'templates/{page}.hidden.html'):
+        page = f'{page}.hidden'
+    
+    template = f'{page}.html'
+    return flask.render_template(template)
 
 @app.route('/view-create', methods=['GET', 'POST'])
 def create_page():
