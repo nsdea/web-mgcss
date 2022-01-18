@@ -1,5 +1,6 @@
 import os
 import re
+import json
 import time
 import flask
 import distro
@@ -16,6 +17,7 @@ from flask import request, jsonify
 app = flask.Flask(__name__)
 
 view_urls = {}
+SERVER_NAME = 'paper'
 
 def default_rendering():
     return 
@@ -74,6 +76,12 @@ def file_path():
     except:
         mc = None
 
+    ops = [x['name'] for x in json.loads(open(f'/home/minecraft/{SERVER_NAME}/ops.json').read())]
+    bans = [x['name'] for x in json.loads(open(f"/home/minecraft/{SERVER_NAME}/banned-players.json").read())]
+    ip_bans = [x['name'] for x in json.loads(open(f"/home/minecraft/{SERVER_NAME}/banned-ips.json").read())]
+    whitelist = [x['name'] for x in json.loads(open(f'/home/minecraft/{SERVER_NAME}/whitelist.json').read())]
+    last_players = [x['name'] for x in json.loads(open(f'/home/minecraft/{SERVER_NAME}/usercache.json').read())[:5]]
+
     return flask.render_template(f'status.html',
         cpu=psutil.cpu_percent(),
         cpus=psutil.cpu_count(),
@@ -84,18 +92,28 @@ def file_path():
         pids=len(psutil.pids()),
         boot_days=round((time.time()-psutil.boot_time())/86400),
         os=f'{distro.linux_distribution()[0]} {distro.linux_distribution()[1]}',
-        mc_players=f'{mc.current_players}/{mc.max_players}' if mc else '',
-        mc_version=mc.version if mc else '',
-        mc_motd=mc.stripped_motd.strip('Ä') if mc else '',
-        mc_ping=mc.latency if mc else '',
-        mc_protocol=mc.slp_protocol if mc else ''
+        
+        mc_player_count=f'{mc.current_players}/{mc.max_players}' if mc else '0/0',
+        mc_version=mc.version if mc else 'Offline',
+        mc_motd=mc.stripped_motd.replace('Â', '') if mc else 'Server is not avaiable',
+        mc_ping=mc.latency if mc else '?',
+        mc_protocol=mc.slp_protocol if mc else '?',
+        mc_last_player=last_players,
+        mc_last_players=len(last_players),
+        mc_whitelist=whitelist,
+        mc_whitelisted=len(whitelist),
+        mc_op=ops,
+        mc_ops=len(ops),
+        mc_normal_ban=bans,
+        mc_ip_ban=ip_bans,
+        mc_normal_bans=len(bans),
+        mc_ip_bans=len(ip_bans)
     )
 
 @app.route('/mc-console-log')
 def mc_console_log():
     log = []
-    server_name = 'paper'
-    lines = open(f'/home/minecraft/{server_name}/.console_history').read().split('\n')[:-1]
+    lines = open(f'/home/minecraft/{SERVER_NAME}/.console_history').read().split('\n')[:-1]
 
     for line in lines:
         line_date = line.split(':')[0]
@@ -118,6 +136,10 @@ def mc_console_log():
     log.reverse()
 
     return flask.render_template(f'mcclog.html', log=log, server_name=server_name)
+
+@app.route('/sitemap')
+def sitemap():
+    return 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=2021, debug=True)

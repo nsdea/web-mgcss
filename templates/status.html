@@ -17,7 +17,7 @@ url="https://onlix.me/status", button="Refresh" %} {% include '_top.html' %} {% 
                 </tr>
                 <tr>
                     <td>Players Online</td>
-                    <td>{{ mc_players }}</td>
+                    <td>{{ mc_player_count }}</td>
                 </tr>
                 <tr>
                     <td>Description</td>
@@ -26,6 +26,71 @@ url="https://onlix.me/status", button="Refresh" %} {% include '_top.html' %} {% 
                 <tr>
                     <td>Latency</td>
                     <td>{{ mc_ping }} ms</td>
+                </tr>
+                <tr>
+                    <td>Last players</td>
+                    <td>
+                        <details>
+                            <summary>{{ mc_last_players }} most recent players</i></summary>
+                            
+                            <ul>
+                                {% for p in mc_last_player %}
+                                    <li><a href="https://namemc.com/profile/{{ p }}">{{ p }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Whitelisted</td>
+                    <td>
+                        <details>
+                            <summary>{{ mc_whitelisted}} players</i></summary>
+                            
+                            <ul>
+                                {% for p in mc_whitelist %}
+                                <li><a href="https://namemc.com/profile/{{ p }}">{{ p }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td>OPs</td>
+                    <td>
+                        <details>
+                            <summary>{{ mc_ops }} players</i></summary>
+                            
+                            <ul>
+                                {% for p in mc_op %}
+                                    <li><a href="https://namemc.com/profile/{{ p }}">{{ p }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </details>
+                    </td>
+                <tr>
+                    <td>Banned</td>
+                    <td>
+                        <details>
+                            <summary>Normal bans ({{ mc_normal_bans }})</i></summary>
+                            
+                            <ul>
+                                {% for p in mc_normal_ban %}
+                                    <li><a href="https://namemc.com/profile/{{ p }}">{{ p }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </details>
+
+                        <details>
+                            <summary>IP bans ({{ mc_ip_bans }})</summary>
+                            
+                            <ul>
+                                {% for p in mc_ip_ban %}
+                                    <li><a href="https://namemc.com/profile/{{ p }}">{{ p }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </details>
+                    </td>
                 </tr>
             </table>
 
