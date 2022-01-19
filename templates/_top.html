@@ -3,8 +3,14 @@
 
 <header class="header" id="home">
     <section class="container">
-        <h1 class="title">{{ title }}</h1>
-        <p class="description" data-version="Currently">{{ description }}</p>
+        {% if title %}
+            <h1 class="title">{{ title }}</h1>
+        {% endif %}
+        
+        {% if description %}
+            <p class="description" data-version="Currently">{{ description }}</p>
+        {% endif %}
+        
         {% if button %}
             <a class="button" href="{{ url }}" title="{{ button }}">{{ button }}</a>
         {% endif %}

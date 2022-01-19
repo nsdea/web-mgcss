@@ -1,5 +1,4 @@
 import os
-import re
 import json
 import time
 import flask
@@ -140,11 +139,9 @@ def mc_console_log():
     
     log.reverse()
 
-    return flask.render_template(f'mcclog.html', log=log, server_name=server_name)
+    return flask.render_template(f'mcclog.html', log=log, server_name=SERVER_NAME)
 
-@app.route('/sitemap')
-def sitemap():
-    return 
+exec(open('closed.hidden.py').read())
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=2021, debug=True)
