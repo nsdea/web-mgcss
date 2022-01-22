@@ -6,10 +6,10 @@ import distro
 import psutil
 import random
 import string
-import minestat
 import jinja2.exceptions
 
 from datetime import datetime
+from mcipc.query import Client
 from html import escape, unescape
 from flask import request, jsonify
 
@@ -71,20 +71,9 @@ def readable_size(size):
     return round(size/1000000000, 1)
 
 @app.route('/status')
-def file_path():
+def status_page():
     ram = psutil.virtual_memory()
     disk = psutil.disk_usage('/')
-
-    try:
-        mc = minestat.MineStat('onlix.me', 25565)
-    except:
-        mc = None
-
-    ops = [x['name'] for x in json.loads(open(f'/home/minecraft/{SERVER_NAME}/ops.json').read())]
-    bans = [x['name'] for x in json.loads(open(f"/home/minecraft/{SERVER_NAME}/banned-players.json").read())]
-    ip_bans = [x['name'] for x in json.loads(open(f"/home/minecraft/{SERVER_NAME}/banned-ips.json").read())]
-    whitelist = [x['name'] for x in json.loads(open(f'/home/minecraft/{SERVER_NAME}/whitelist.json').read())]
-    last_players = [x['name'] for x in json.loads(open(f'/home/minecraft/{SERVER_NAME}/usercache.json').read())[:5]]
 
     return flask.render_template(f'status.html',
         cpu=psutil.cpu_percent(),
@@ -96,22 +85,38 @@ def file_path():
         pids=len(psutil.pids()),
         boot_days=round((time.time()-psutil.boot_time())/86400),
         os=f'{distro.linux_distribution()[0]} {distro.linux_distribution()[1]}',
-        
-        mc_player_count=f'{mc.current_players}/{mc.max_players}' if mc else '0/0',
-        mc_version=mc.version if mc else 'Offline',
-        mc_motd=mc.stripped_motd.replace('Â', '') if mc else 'Server is not avaiable',
-        mc_ping=mc.latency if mc else '?',
-        mc_protocol=mc.slp_protocol if mc else '?',
-        mc_last_player=last_players,
-        mc_last_players=len(last_players),
-        mc_whitelist=whitelist,
-        mc_whitelisted=len(whitelist),
-        mc_op=ops,
-        mc_ops=len(ops),
-        mc_normal_ban=bans,
-        mc_ip_ban=ip_bans,
-        mc_normal_bans=len(bans),
-        mc_ip_bans=len(ip_bans)
+    )
+
+@app.route('/status/mc')
+def status_mc():
+    ops = [x['name'] for x in json.loads(open(f'/home/minecraft/{SERVER_NAME}/ops.json').read())]
+    bans = [x['name'] for x in json.loads(open(f"/home/minecraft/{SERVER_NAME}/banned-players.json").read())]
+    ip_bans = [x['name'] for x in json.loads(open(f"/home/minecraft/{SERVER_NAME}/banned-ips.json").read())]
+    whitelist = [x['name'] for x in json.loads(open(f'/home/minecraft/{SERVER_NAME}/whitelist.json').read())]
+    last_players = [x['name'] for x in json.loads(open(f'/home/minecraft/{SERVER_NAME}/usercache.json').read())[:5]]
+
+    with Client('127.0.0.1', 25565) as client:
+        server_data = client.stats(full=True)
+
+    plugin_list = list(server_data.plugins.values())[0]
+
+    return flask.render_template(f'status_mc.html',
+        players=server_data.players,
+        player_count=f'{server_data.num_players}/{server_data.max_players}' if server_data else '0/0',
+        version=server_data.version if server_data else 'Offline',
+        game_type=server_data.game_type if server_data else 'Server is not avaiable',
+        last_player=last_players,
+        last_players=len(last_players),
+        whitelist=whitelist,
+        whitelisted=len(whitelist),
+        plugin=plugin_list,
+        plugins=len(plugin_list),
+        op=ops,
+        ops=len(ops),
+        normal_ban=bans,
+        ip_ban=ip_bans,
+        normal_bans=len(bans),
+        ip_bans=len(ip_bans)
     )
 
 @app.route('/mc-console-log')

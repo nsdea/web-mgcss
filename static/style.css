@@ -39,6 +39,12 @@
         opacity: 1.0;
         transition: 0.5s;
     }
+
+    .link  {
+        color: #b364e4 !important;
+        opacity: 1.0;
+        transition: 0.5s;
+    }
     
     a:hover  {
         opacity: 0.7;

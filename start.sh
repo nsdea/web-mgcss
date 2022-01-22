@@ -1,6 +1,7 @@
 while true
 do
 	echo "START.SH BEGIN"
+	cd "/home/python/web/public"
 	screen -S web python3 web.py
 	echo "START.SH BROKE"
 	sleep 3
