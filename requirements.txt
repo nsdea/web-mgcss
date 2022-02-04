@@ -2,4 +2,6 @@ flask
 mcipc
 psutil
 distro
+pyyaml
 requests
+Turbo-Flask
