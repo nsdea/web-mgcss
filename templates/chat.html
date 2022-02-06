@@ -1,0 +1,24 @@
+{% with title="LixChat", description="Experimental chat! Warning: These chats might not be 100% secure and are not moderated. Please do not trust any links etc. in here!",
+url="", button="" %} {% include '_top.html' %} {% endwith %}
+
+<section class="container" id="main">
+    <h2>#{{ channel or "testing" }}</h2>
+
+    <form action="" method="GET">
+        <p>Message <input type="text" name="message" id="message"/></p>
+        <p><input type="submit" value="submit" /></p>
+    </form>
+
+    <br>
+
+    <div id="info-text">
+        {% for message in messages %}
+            <p>{{ message["user"] }}</p>
+            <blockquote>
+                <p><em>{{ message["text"] }}</em></p>
+            </blockquote>
+        {% endfor %}
+    </div>
+</section>
+
+{% include '_bottom.html' %}

@@ -1,21 +1,28 @@
 import os
 import json
+import yaml
 import time
 import flask
 import distro
 import psutil
 import random
 import string
+import threading
 import jinja2.exceptions
 
+from flask import request
+from turbo_flask import Turbo
 from datetime import datetime
 from mcipc.query import Client
 from html import escape, unescape
-from flask import request, jsonify
 
-app = flask.Flask(__name__)
+app = flask.Flask(__name__, static_url_path='/')
+app.secret_key = random.sample('ABCDEF0123456789', 6)
+
+turbo = Turbo(app)
 
 view_urls = {}
+
 SERVER_NAME = 'paper'
 
 def default_rendering():
@@ -27,6 +34,13 @@ def home():
 
 @app.errorhandler(jinja2.exceptions.TemplateNotFound)
 def template_not_found(error):
+    redirects = yaml.load(open('redirects.yml'), Loader=yaml.FullLoader)
+    path = error.name.replace('.html', '')
+
+    if path in redirects.keys():
+        list(flask.request.args.keys())[0] if flask.request.args.keys() else False
+        return flask.redirect(redirects[path])
+
     return flask.render_template(f'error.html', title='Page not found!', description=f'Couldn\'t find this website: {error.name}')
 
 @app.errorhandler(404)
@@ -119,6 +133,13 @@ def status_mc():
         ip_bans=len(ip_bans)
     )
 
+@app.route('/red')
+def red(*args, **kwargs):
+    try:
+        return flask.redirect(unescape(list(flask.request.args.keys())[0]))
+    except IndexError:
+        return flask.redirect('/')
+
 @app.route('/mc-console-log')
 def mc_console_log():
     log = []
@@ -146,7 +167,46 @@ def mc_console_log():
 
     return flask.render_template(f'mcclog.html', log=log, server_name=SERVER_NAME)
 
+
+def read_chat(channel=None):
+    data = yaml.load(open('chats.yml'), Loader=yaml.FullLoader)
+    data = data or {}
+    return data.get(channel) or data
+
+def send_message(channel, user='Guest', text=''):
+    chat = read_chat()
+
+    if not chat.get(channel):
+        chat[channel] = []
+
+    chat[channel].append({'user': user, 'text': text})
+    yaml.dump(chat, open('chats.yml', 'w'), sort_keys=False, default_flow_style=False)
+
+@app.route('/chat/<channel>')
+def chat_channel(channel):
+    flask.flash("Lol")
+    if flask.request.args.get('message'):
+        send_message(channel, flask.request.args.get('from') or 'Guest', flask.request.args.get('message'))
+    
+    if not read_chat(channel):
+        return flask.render_template(f'chat_error.html')
+    return flask.render_template(f'chat.html', channel=channel, messages=reversed(read_chat(channel)))
+
+@app.before_first_request
+def before_first_request():
+    threading.Thread(target=update_load).start()
+
+def update_load():
+    with app.app_context():
+        while True:
+            time.sleep(5)
+            turbo.push(turbo.replace(flask.render_template('chat.html'), 'load'))
+
+### RUN CLOSED SOURCE ### 
+
 exec(open('closed.hidden.py').read())
+
+### ================= ###
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=2021, debug=True)
