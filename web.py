@@ -187,6 +187,10 @@ def chat_channel(channel):
     flask.flash("Lol")
     if flask.request.args.get('message'):
         send_message(channel, flask.request.args.get('from') or 'Guest', flask.request.args.get('message'))
+@app.route('/chat/<channel>', methods=['GET', 'POST'])
+def chat_channel(channel):
+    if flask.request.form.to_dict().get('message'):
+        send_message(channel, flask.request.args.get('from') or 'Guest', flask.request.form.to_dict().get('message'))
     
     if not read_chat(channel):
         return flask.render_template(f'chat_error.html')
@@ -201,6 +205,15 @@ def update_load():
         while True:
             time.sleep(5)
             turbo.push(turbo.replace(flask.render_template('chat.html'), 'load'))
+# @app.before_first_request
+# def before_first_request():
+#     threading.Thread(target=update_load).start()
+
+# def update_load():
+#     with app.app_context():
+#         while True:
+#             time.sleep(5)
+#             turbo.push(turbo.replace(flask.render_template('chat.html'), 'load'))
 
 ### RUN CLOSED SOURCE ### 
 
