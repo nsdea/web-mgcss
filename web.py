@@ -29,6 +29,9 @@ view_urls = {}
 
 SERVER_NAME = 'paper'
 
+@app.route('/x/<path:subpath>')
+def show_subpath(subpath):
+    return f'Subpath {escape(subpath)}'
 
 @app.route('/')
 def home():
@@ -48,11 +51,6 @@ def template_not_found(error):
 @app.errorhandler(404)
 def error_404(error):
     return flask.render_template(f'error.html', title='File not found!', description=f'Couldn\'t find this file.')
-
-@app.route('/<path:subpath>')
-def page_returner(subpath):
-    return 'hi'
-    return flask.render_template(f'{escape(subpath)}.html') 
 
 @app.route('/view-create', methods=['GET', 'POST'])
 def create_page():
@@ -213,7 +211,6 @@ def update_load():
 exec(open('closed.hidden.py').read())
 
 ### ================= ###
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=2021, debug=True)
