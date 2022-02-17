@@ -13,20 +13,22 @@ import jinja2.exceptions
 from flask import request
 from turbo_flask import Turbo
 from datetime import datetime
-from mcipc.query import Client
+
+try:
+    from mcipc.query import Client
+except: # server offline
+    pass
+
 from html import escape, unescape
 
 app = flask.Flask(__name__, static_url_path='/')
 app.secret_key = random.sample('ABCDEF0123456789', 6)
-
 turbo = Turbo(app)
 
 view_urls = {}
 
 SERVER_NAME = 'paper'
 
-def default_rendering():
-    return 
 
 @app.route('/')
 def home():
@@ -45,16 +47,12 @@ def template_not_found(error):
 
 @app.errorhandler(404)
 def error_404(error):
-    return flask.render_template(f'error.html', title='File not found!', description=f'Couldn\'t find this file: {error.name}')
+    return flask.render_template(f'error.html', title='File not found!', description=f'Couldn\'t find this file.')
 
 @app.route('/<path:subpath>')
 def page_returner(subpath):
-    page = escape(subpath)
-    if os.path.exists(f'templates/{page}.hidden.html'):
-        page = f'{page}.hidden'
-    
-    template = f'{page}.html'
-    return flask.render_template(template)
+    return 'hi'
+    return flask.render_template(f'{escape(subpath)}.html') 
 
 @app.route('/view-create', methods=['GET', 'POST'])
 def create_page():
@@ -182,11 +180,6 @@ def send_message(channel, user='Guest', text=''):
     chat[channel].append({'user': user, 'text': text})
     yaml.dump(chat, open('chats.yml', 'w'), sort_keys=False, default_flow_style=False)
 
-@app.route('/chat/<channel>')
-def chat_channel(channel):
-    flask.flash("Lol")
-    if flask.request.args.get('message'):
-        send_message(channel, flask.request.args.get('from') or 'Guest', flask.request.args.get('message'))
 @app.route('/chat/<channel>', methods=['GET', 'POST'])
 def chat_channel(channel):
     if flask.request.form.to_dict().get('message'):
@@ -220,6 +213,7 @@ def update_load():
 exec(open('closed.hidden.py').read())
 
 ### ================= ###
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=2021, debug=True)
