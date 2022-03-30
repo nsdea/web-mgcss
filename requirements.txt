@@ -1,0 +1,8 @@
+flask
+mcipc
+psutil
+distro
+pyyaml
+requests
+markdown
+Turbo-Flask
